@@ -1,45 +1,42 @@
-/**
- * Created by jwest1 on 9/1/2017.
- */
-import java.lang.reflect.Array;
+import java.util.ArrayList;
+import java.util.List;
 import java.util.Scanner;
 
-public class FizzBuzzP3 {
-
-    public static Object[] FizzBuzz(int n)
+public class FizzBuzzP4 {
+    public static List<Object> FizzBuzz(int n)
     {
         //Because I wanted to have a array to keep track of both ints and Strings, the object array seemed to be the
         //best option
-        Object fizzBuzz[] = new Object[n+1];
+        List<Object> fizzBuzz = new ArrayList<>();
 
         if(n< 1)
         {
             System.out.println("Invalid number");
         }
 
-        for (int i = 0; i < fizzBuzz.length; i++)
+        for (int i = 0; i < n+1; i++)
         {
             int index = i;
             if(index > 1 && index%3==0 && index%5 != 0)
             {
-                fizzBuzz[i] = "Fizz";
+                fizzBuzz.add(i,"Fizz");
                 //The continues are used as a way to be sure that once a number was found to be fizz or buzz or both
                 //That it wouldnt have to go through the rest of the loop
                 continue;
             }
             else if(index > 1 && index%3!=0 && index%5 == 0)
             {
-                fizzBuzz[i] = "Buzz";
+                fizzBuzz.add(i,"Buzz");
                 continue;
             }
             else if(index > 1 && index%3==0 && index%5 == 0)
             {
-                fizzBuzz[i] = "Fizz-Buzz";
+                fizzBuzz.add(i,"Fizz-Buzz");
                 continue;
             }
             else
             {
-                fizzBuzz[i] = i;
+                fizzBuzz.add(i,i);
             }
         }
         return fizzBuzz;
@@ -62,13 +59,12 @@ public class FizzBuzzP3 {
                 break;
             }else
                 n= Integer.parseInt(str);
-            Object tempArray[] = FizzBuzzP3.FizzBuzz(n);
-            for(int i = 0; i < tempArray.length; i++)
+            List<Object> tempList = FizzBuzzP4.FizzBuzz(n);
+            for(int i = 0; i < tempList.size(); i++)
             {
-                System.out.println(tempArray[i]);
+                System.out.println(tempList.get(i));
             }
 
         }
     }
-
 }
